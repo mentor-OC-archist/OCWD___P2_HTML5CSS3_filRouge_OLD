@@ -1,0 +1,6 @@
+[submodule "_/cv_sol"]
+	path = _/cv_sol
+	url = https://github.com/mentor-OC-archist/portfolio-web-developer-cyril-achi
+[submodule "_/___P2_mentor_repository"]
+	path = _/___P2_mentor_repository
+	url = https://github.com/mentor-OC-archist/OC__frontend__P2
