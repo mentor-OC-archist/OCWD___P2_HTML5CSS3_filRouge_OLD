@@ -3,15 +3,22 @@
 
         select.focus()
 
+        /**
+         * REMPLIR LA BALISE <select/> AVEC LES TITRE jsonDatas[index].h
+         */
         for(index in jsonDatas){
             let opt = document.createElement('option')
             opt.value = index
-            opt.innerHTML = index+": "+jsonDatas[index].h
+            opt.innerHTML = /*index+": "+*/jsonDatas[index].h
             opt.data = jsonDatas[index]
             // console.log(opt.data);
             select.append(opt)
         }
 
+        /**
+         * REPÈRE LE HASH DE L'URL LORSQUE LE CLIENT ARRIVE SUR LA PAGE
+         * ET CHARGE L'<option/> DU <select/> CORRESPONDANTE DÈS LE CHARGEMENT DE LA PAGE
+         */
         let s_array = Array.from(select.querySelectorAll('option'))
         if(document.location.hash != ""){
             for(let a in s_array)if("#"+s_array[a].value == document.location.hash){
@@ -22,6 +29,10 @@
             }
         }
          
+        /**
+         * PERMET DE SÉLECTIONNER UN NOUVEL EXERCICE
+         * @param {event onchange} that CE N'EST PAS VRAIMENT UTILISÉ xD
+         */
         function selectOnchange(that){
             // console.log(that);
             // alert(select.selectedIndex)
@@ -33,9 +44,13 @@
             // console.log(select.value);
 
             iframe.src = "./_/"+select.value
-            iframe_sass.src = "./_/"+that.value+"/sass/main.scss"
-            iframe_css.src = "./_/"+select.value+"/public/css/style.css"
+            iframe_sol.src = "./_/"+that.value+"/SOLUTION"
+            iframe_css.src = "./_/"+select.value+"/SOLUTION/style.css"
+            // console.log(select[select.selectedIndex].data);
+            iframe_video.src = select[select.selectedIndex].data.video
 
+
+            /*
             h1.innerHTML = p.innerHTML = tasks_p.innerHTML = tasks_ol.innerHTML = ""
             h1.innerHTML = opt.data.h
             p.innerHTML = opt.data.p
@@ -48,8 +63,15 @@
                     : "calc(" + (100 / Math.floor(opt.data.tasks.ol.length / 3)) + "% - 1em)"
                 tasks_ol.append(li) 
             })
+            */
 
         }
+
+                
+        /**
+         * PERMET DE PASSER À L'EXERCICE ADJACENT
+         * @param {INT} smthg CORRENSPOND AU NUMÉRO DE L'EXERCICE
+         */
         function move(smthg){
             if(typeof smthg == "undefined" && select.selectedIndex>1){
                 select.selectedIndex = select.selectedIndex - 1
