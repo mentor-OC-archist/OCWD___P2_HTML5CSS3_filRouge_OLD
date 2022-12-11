@@ -97,7 +97,7 @@ header>ul>li>a{
 nav{
    padding: 300px 0;
    text-align: center;
-   background: url("../assets/images/backgroung_image.jpg") center center;
+   background: url("../../assets/images/backgroung_image.jpg") center center;
 }
 nav>img{
    width: 150px;
